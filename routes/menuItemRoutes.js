@@ -1,17 +1,4 @@
-const express = require("express");
-const router = express.Router();
 
-const MenuItem  = require('./../models/MenuItem');
-
-router.post("/", async (req, res) => {
-  try {
-    // the request bosy containes the person data
-    const data = req.body;
-    // create a new person document using the mongoose model
-    const newPerson = new MenuItem(data);
-    // save the new perosn in database
-    const response = await newPerson.save();
-    console.log("data saved");
     res.status(200).json(response);
   } catch (error) {
     console.log(error);
@@ -26,7 +13,7 @@ router.get("/", async (req, res) => {
     res.status(200).json(data);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "internla server error" });
+    res.status(500).json({ error: "internal server error" });
   }
 });
 
